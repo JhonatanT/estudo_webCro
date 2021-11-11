@@ -24,16 +24,16 @@ const fs = require('fs');
 
     setTimeout(async () => {
       await page1.type('[name="emailOrPhone"]', email)
-      await page1.type('[name="fullName"]', "testaos")
-      await page1.type('[name="username"]', "wqeqweqw2WW")
-      await page1.type('[name="password"]', "wqeqweqw2WW2")
+      await page1.type('[name="fullName"]', "")
+      await page1.type('[name="username"]', "")
+      await page1.type('[name="password"]', "")
       setTimeout(async () => {
          await page1.click('[type="submit"]')
          setTimeout(async () => {
 
-          await page1.type('[title="Mês:"]', "janeiro")
-          await page1.type('[title="Dia:"]', "29")
-          await page1.type('[title="Ano:"]', "2000")
+          await page1.type('[title="Mês:"]', "")
+          await page1.type('[title="Dia:"]', "")
+          await page1.type('[title="Ano:"]', "")
           
           await page1.click('[class="sqdOP  L3NKy _4pI4F  y3zKF     "]')
 
