@@ -20,7 +20,7 @@ const fs = require('fs');
       setTimeout(async () => {
         await page1.type('[name="emailOrPhone"]', email)
         await page1.type('[name="fullName"]', "testaos")
-        await page1.type('[name="username"]', "wqeqweqw2WW122")
+        await page1.type('[name="username"]', "wqeqweqw2WW1221")
         await page1.type('[name="password"]', "wqeqweqw2WW2222")
         setTimeout(async () => {
            await page1.click('[type="submit"]')
@@ -40,8 +40,8 @@ const fs = require('fs');
               
               await page1.type('[type="text"]', codigo)
               await page1.click('[type="submit"]')
-              await browser.close();
-            },10000)
+              //await browser.close();
+            },15000)
   
            },1000)
           }, 1000)
