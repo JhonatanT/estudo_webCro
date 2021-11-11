@@ -40,8 +40,8 @@ const fs = require('fs');
               
               await page1.type('[type="text"]', codigo)
               await page1.click('[type="submit"]')
-              
-            },20000)
+              await browser.close();
+            },10000)
   
            },1000)
           }, 1000)
