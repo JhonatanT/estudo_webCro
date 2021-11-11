@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "web": "node src/webcro_create_account_instagram.js"
+    "web": "node src/webcro_list_comments_inta_v2.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
