@@ -4,28 +4,43 @@ const fs = require('fs');
 
 
 (async () => {
-  const browser = await puppeteer.launch({headless:true});
+  const browser = await puppeteer.launch({ headless: false });
   const page = await browser.newPage();
-  await page.goto('https://www.instagram.com/_geektogeek/');
+  await page.goto('https://www.instagram.com/');
 
-  const imgList = await page.evaluate(() => {
-    
-    const nodeList = document.querySelectorAll('article img')
-    const imgArray = [...nodeList]
-    const imgList = imgArray.map(({src}) => ({
-      src
-    }))
-    return imgList
+  setTimeout(async () => {
 
-  })
+    await page.type('[name="username"]', "jhonatantavaris@hotmail.com")
+    await page.type('[name="password"]', "Jho@39412934")
+    await page.click('[type="submit"]')
 
-  fs.writeFile('instagram.json', JSON.stringify(imgList, null, 2), err => {
+    await page.waitForNavigation();
 
-    if(err) throw new Error("Algo deu ruim")
+    await page.goto('https://www.instagram.com/_geektogeek/');
 
-    console.log("SALVOU MLKOTE")
+    const imgList = await page.evaluate(() => {
 
-  })
+      const nodeList = document.querySelectorAll('article img')
+      const imgArray = [...nodeList]
+      const imgList = imgArray.map(img => ({
+        src: img.src
+      }))
+      return imgList
 
-  await browser.close();
+    })
+
+    fs.writeFile('instagram.json', JSON.stringify(imgList, null, 2), err => {
+
+      if (err) throw new Error("Algo deu ruim")
+
+      console.log("SALVOU MLKOTE")
+
+    })
+    await browser.close();
+
+  }, 1000);
+
+
+
+
 })();

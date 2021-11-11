@@ -5,22 +5,42 @@ import "express-async-errors";
 import cors from "cors";
 
 const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 (async () => {
-  const browser = await puppeteer.launch({headless:false});
-  const page = await browser.newPage();
-  await page.goto('https://www.instagram.com/');
+  const browser = await puppeteer.launch({ headless: false });
+
+  const page = await browser.newPage('1');
+  await page.goto('https://temp-mail.org/pt/');
+
   setTimeout(async () => {
-    await page.type('[name="username"]',"")
-    await page.type('[name="password"]',"")
-    await page.click('[type="submit"]')
-  }, 3000);
-  
+    const email = await page.evaluate(() => {
 
-  //await browser.close();
+      return document.querySelector('[id="mail"]')?.value
+    })
+
+    const page1 = await browser.newPage('2');
+    await page1.goto('https://www.instagram.com/accounts/emailsignup/');
+
+    setTimeout(async () => {
+      await page1.type('[name="emailOrPhone"]', email)
+      await page1.type('[name="fullName"]', "testaos")
+      await page1.type('[name="username"]', "wqeqweqw2WW")
+      await page1.type('[name="password"]', "wqeqweqw2WW")
+      setTimeout(async () => { await page.click('[type="submit"]') }, 1000)
+
+    }, 1000)
+
+  }, 4000)
+
+
+
+
+
+
+
+
 })();
-
-//import "./database"
 
 const app = express();
 
