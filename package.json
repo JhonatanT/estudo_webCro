@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "web": "node src/webcro.js"
+    "web": "node src/webcro_list_comment_post.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -26,7 +26,6 @@
     "puppeteer": "^11.0.0",
     "puppeteer-core": "^11.0.0",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.38",
     "uuid": "^8.3.2"
   }
 }

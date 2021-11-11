@@ -1,9 +1,3 @@
-import "reflect-metadata";
-import express, { Request, Response, NextFunction } from "express";
-import "express-async-errors";
-//import { router } from "./routes"
-import cors from "cors";
-
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
@@ -32,7 +26,7 @@ const fs = require('fs');
 
     await page.waitForNavigation();
 
-    await page.goto('https://www.instagram.com/p/CVRk1GYLjf1/');
+    await page.goto('https://www.instagram.com/p/CUDCN5Gr6WI/');
 
     await loadMore(page, 'div .qF0y9.Igw0E.IwRSH.YBx95._4EzTm.NUiEW')
     const imgList = await page.evaluate(() => {
@@ -46,7 +40,7 @@ const fs = require('fs');
       } console.log(con)
       return con
     })
-    fs.writeFile('nomes_posts.json', JSON.stringify(imgList, null, 2), (err: any)=> {
+    fs.writeFile('nomes_posts.json', JSON.stringify(imgList, null, 2), err => {
 
       if (err) throw new Error("Algo deu ruim")
 
@@ -56,11 +50,3 @@ const fs = require('fs');
     //await browser.close();
   }, 1000);
 })();
-
-const app = express();
-
-app.use(cors())
-
-app.use(express.json())
-
-app.listen(3030, () => console.log('Rodando na porta 3030'))
