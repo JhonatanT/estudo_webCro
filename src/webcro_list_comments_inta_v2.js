@@ -11,7 +11,7 @@ const fs = require('fs');
     if (moreB) {
       console.log("MORE")
       await moreB.click()
-      await page.waitForSelector(selector, { timeout: 3000 }).catch(() => { console.log("timeout") })
+      await page.waitForSelector(selector).catch(() => { console.log("timeout") })
       await loadMore(page, selector)
     }
   }
@@ -26,15 +26,15 @@ const fs = require('fs');
 
   setTimeout(async () => {
 
-    await page.type('[name="username"]', "")
-    await page.type('[name="password"]', "")
+    await page.type('[name="username"]', "wqeqweqw2WW")
+    await page.type('[name="password"]', "wqeqweqw2WW2")
     await page.click('[type="submit"]')
 
     await page.waitForNavigation();
 
-    await page.goto('https://www.instagram.com/p/CVRDh1pr0Hi/');
+    await page.goto('https://www.instagram.com/p/CViVbVTLoVl/');
 
-    await loadMore(page, 'div .qF0y9.Igw0E.IwRSH.YBx95._4EzTm.NUiEW')
+    await loadMore(page, 'div .qF0y9.Igw0E.IwRSH.YBx95._4EzTm.NUiEW button')
     const arrobas = await getComment(page, '.C4VMK span a')
     const counted = count(arrobas)
     const sorted = sort(counted)
