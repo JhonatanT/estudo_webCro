@@ -6,10 +6,10 @@ const fs = require('fs');
 
   async function loadMore(page, selector) {
     const moreB = await page.$(selector)
-    if(moreB){
+    if (moreB) {
       console.log("MORE")
       await moreB.click()
-      await page.waitFor(selector,{timeout:3000}).catch(() => {console.log("timeout")})
+      await page.waitFor(selector, { timeout: 3000 }).catch(() => { console.log("timeout") })
       await loadMore(page, selector)
     }
   }
@@ -20,8 +20,8 @@ const fs = require('fs');
 
   setTimeout(async () => {
 
-    await page.type('[name="username"]', "wqeqweqw2WW122")
-    await page.type('[name="password"]', "wqeqweqw2WW2222")
+    await page.type('[name="username"]', "")
+    await page.type('[name="password"]', "")
     await page.click('[type="submit"]')
 
     await page.waitForNavigation();
@@ -31,11 +31,11 @@ const fs = require('fs');
     await loadMore(page, 'div .qF0y9.Igw0E.IwRSH.YBx95._4EzTm.NUiEW')
     const imgList = await page.evaluate(() => {
 
-      var con = []; 
+      var con = [];
       const numLinha = document.querySelectorAll('article span.Jv7Aj.mArmR.MqpiF').length;
 
-      for(var i=0; i < numLinha; i++){
-        var nome = document.querySelectorAll('article span.Jv7Aj.mArmR.MqpiF')[i].innerText; 
+      for (var i = 0; i < numLinha; i++) {
+        var nome = document.querySelectorAll('article span.Jv7Aj.mArmR.MqpiF')[i].innerText;
         con.push(nome)
       } console.log(con)
       return con

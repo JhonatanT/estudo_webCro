@@ -10,8 +10,8 @@ const fs = require('fs');
 
   setTimeout(async () => {
 
-    await page.type('[name="username"]', "jhonatantavaris@hotmail.com")
-    await page.type('[name="password"]', "Jho@39412934")
+    await page.type('[name="username"]', "")
+    await page.type('[name="password"]', "")
     await page.click('[type="submit"]')
 
     await page.waitForNavigation();
